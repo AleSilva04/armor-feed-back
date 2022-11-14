@@ -1,6 +1,10 @@
-﻿namespace ArmorFeedApi.Customers.Domain.Models;
+﻿using ArmorFeedApi.Security.Domain.Models;
 
-public class Customer
+namespace ArmorFeedApi.Customers.Domain.Models;
+
+public class Customer : User
 {
-    public int Id { get; set; }
+    
+    public string LastName { get; set; }
+    public int SubscriptionPlan { get; set; }
 }
