@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/isMvg3qR4lXX+QcHqo4YT5dgcPYeSQpFzv135Gu3t604pXGB6UC/fkcJZPb9LGd40UQdFTW1QWlhbzNUereng==",
+  "dgSpecHash": "9F/X3/b7dirSObHTxRHwANt8SzOw4OzW6HosUIYmpAOydgH0buJuKUbzgdGQGyjyhUS314+FmD5Q1NDgwe7lTw==",
   "success": true,
-  "projectFilePath": "D:\\armorfeed-api\\ArmorFeedApi\\ArmorFeedApi\\ArmorFeedApi.csproj",
+  "projectFilePath": "D:\\arq_soft\\apicurso\\armorfeed-api\\ArmorFeedApi\\ArmorFeedApi\\ArmorFeedApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\GIGABYTE\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\GIGABYTE\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
