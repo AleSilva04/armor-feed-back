@@ -23,7 +23,7 @@ public class PaymentService: IPaymentService
         return await _paymentRepository.ListAsync();
     }
 
-    public async Task<IEnumerable<Payment>> ListByShipmentIdAsync(int shipmentId)
+    public async Task<Payment> ListByShipmentIdAsync(int shipmentId)
     {
         return await _paymentRepository.FindByShipmentIdAsync(shipmentId);
     }
