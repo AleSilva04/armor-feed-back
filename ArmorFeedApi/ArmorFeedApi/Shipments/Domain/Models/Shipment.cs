@@ -1,4 +1,5 @@
-﻿using ArmorFeedApi.Customers.Domain.Models;
+﻿using ArmorFeedApi.Comments.Domain.Models;
+using ArmorFeedApi.Customers.Domain.Models;
 using ArmorFeedApi.Enterprises.Domain.Models;
 using ArmorFeedApi.Payments.Domain.Model;
 
@@ -26,4 +27,5 @@ public class Shipment
     
     public int CustomerId { get; set; }
     public Customer Customer { get; set; }
+    public IList<Comment> Comments { get; set; } = new List<Comment>();
 }
