@@ -1,106 +1,69 @@
-﻿using System.Net.Mime;
+﻿using ArmorFeedApi.Enterprises.Authorization.Attributes;
 using ArmorFeedApi.Enterprises.Domain.Models;
 using ArmorFeedApi.Enterprises.Domain.Services;
+using ArmorFeedApi.Enterprises.Domain.Services.Communication;
 using ArmorFeedApi.Enterprises.Resources;
-using ArmorFeedApi.Shared.Extensions;
+using ArmorFeedApi.Security.Authorization.Attributes;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
+using ArmorFeedApi.Security.Domain.Services.Communication;
 
 namespace ArmorFeedApi.Enterprises.Controllers;
 
+[Authorize]
 [ApiController]
-[Route("/api/v1/[controller]")]
-[Produces(MediaTypeNames.Application.Json)]
-[SwaggerTag("Create, Read, Update and Delete Enterprises")]
+[Route("api/v1/[controller]")]
 public class EnterprisesController: ControllerBase
 {
-    private readonly IEnterpriseService _enterpriseService;
+    private readonly IEnterpriseService _userService;
     private readonly IMapper _mapper;
-
-    public EnterprisesController(IEnterpriseService enterpriseService, IMapper mapper)
+    
+    public EnterprisesController(IEnterpriseService userService, IMapper mapper)
     {
-        _enterpriseService = enterpriseService;
+        _userService = userService;
         _mapper = mapper;
     }
-    [HttpGet]
-    [SwaggerOperation(
-        Summary = "Get All Enterprise",
-        Description = "Get All Enterprise",
-        OperationId = "GetEnterprise",
-        Tags = new []{"Enterprises"}
-    )]
-    public async Task<IEnumerable<EnterpriseResource>> GetAllSync()
+    [AllowAnonymous]
+    [HttpPost("sign-in")]
+    public async Task<IActionResult> AuthenticateAsync(AuthenticateRequest request)
     {
-        var enterprises = await _enterpriseService.ListAsync();
-        var resources = _mapper.Map<IEnumerable<Enterprise>, IEnumerable<EnterpriseResource>>(enterprises);
-        return resources;
+        var response = await _userService.Authenticate(request);
+        return Ok(response);
     }
     
-    [HttpPost]
-    [SwaggerOperation(
-        Summary = "Post Enterprise",
-        Description = "Save Enterprise In Database",
-        OperationId = "PostEnterprise",
-        Tags = new []{"Enterprises"}
-    )]
-    public async Task<IActionResult> PostAsync([FromBody] SaveEnterpriseResource resource)
+    [AllowAnonymous]
+    [HttpPost("sign-up")]
+    public async Task<IActionResult> RegisterAsync(RegisterEnterpriseRequest request)
     {
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState.GetErrorMessages());
-
-        var enterprise = _mapper.Map<SaveEnterpriseResource, Enterprise>(resource);
-
-        var result = await _enterpriseService.SaveAsync(enterprise);
-
-        if (!result.Success)
-            return BadRequest(result.Message);
-
-        var categoryResource = _mapper.Map<Enterprise, EnterpriseResource>(result.Resource);
-
-        return Ok(categoryResource);
+        await _userService.RegisterAsync(request);
+        return Ok(new { message ="Registration successful"});
     }
-
+    [AllowAnonymous]
+    [HttpGet]
+    public async Task<IActionResult> GetAllAsync()
+    {
+        var users = await _userService.ListAsync();
+        var resources = _mapper.Map<IEnumerable<Enterprise>, IEnumerable<EnterpriseResource>>(users);
+        return Ok(resources);
+    }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetByIdAsync(int id)
+    {
+        var user = await _userService.GetByIdAsync(id);
+        var resource = _mapper.Map<Enterprise, EnterpriseResource>(user);
+        return Ok(resource);
+    }
     [HttpPut("{id}")]
-    [SwaggerOperation(
-        Summary = "Edit Enterprise",
-        Description = "Edit Enterprise exiting in database",
-        OperationId = "PutEnterprise",
-        Tags = new []{"Enterprises"}
-    )]
-    public async Task<IActionResult> PutAsync(int id, [FromBody] SaveEnterpriseResource resource)
+    public async Task<IActionResult> UpdateAsync(int id, UpdateEnterpriseRequest request)
     {
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState.GetErrorMessages());
-        
-        var enterprise = _mapper.Map<SaveEnterpriseResource, Enterprise>(resource);
-
-        var result = await _enterpriseService.UpdateAsync(id, enterprise);
-        
-        if (!result.Success)
-            return BadRequest(result.Message);
-
-        var categoryResource = _mapper.Map<Enterprise, EnterpriseResource>(result.Resource);
-
-        return Ok(categoryResource);
+        await _userService.UpdateAsync(id, request);
+        return Ok(new { message = "User updated successfully" });
     }
-
     [HttpDelete("{id}")]
-    [SwaggerOperation(
-        Summary = "Delete Enterprise",
-        Description = "Delete Enterprise By Id In Database",
-        OperationId = "DeleteEnterprise",
-        Tags = new []{"Enterprises"}
-    )]
     public async Task<IActionResult> DeleteAsync(int id)
     {
-        var result = await _enterpriseService.DeleteAsync(id);
-        
-        if (!result.Success)
-            return BadRequest(result.Message);
-
-        var categoryResource = _mapper.Map<Enterprise, EnterpriseResource>(result.Resource);
-
-        return Ok(categoryResource);
+        await _userService.DeleteAsync(id);
+        return Ok(new { message = "User deleted successfully" });
     }
+
 }
