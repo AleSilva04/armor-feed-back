@@ -45,14 +45,10 @@ public class SaveShipmentResource
     public string DestinyReference { get; set; }
 
     [Required]
-    [DataType(DataType.Date)]
-    [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-    public DateTime PickUpDate { get; set; }
+    public string PickUpDate { get; set; }
     
     [Required]
-    [DataType(DataType.Date)]
-    [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-    public DateTime DeliveryDate { get; set; }
+    public string DeliveryDate { get; set; }
     
     [Required]
     public int Status { get; set; }
