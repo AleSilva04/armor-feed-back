@@ -39,6 +39,13 @@ public class PaymentsController : ControllerBase
         var resources = _mapper.Map<IEnumerable<Payment>, IEnumerable<PaymentResource>>(payments);
         return resources;
     }
+    [HttpGet("shipment/{id}")]
+    public async Task<PaymentResource> GetAllByShipmentIdAsync(int id)
+    {
+        var payments = await _paymentService.ListByShipmentIdAsync(id);
+        var resources = _mapper.Map<Payment, PaymentResource>(payments);
+        return resources;
+    }
 
     [HttpPost]
     [SwaggerOperation(

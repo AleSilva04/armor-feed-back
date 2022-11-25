@@ -25,9 +25,9 @@ public class PaymentRepository: BaseRepository, IPaymentRepository
         return await _context.Payments.FirstOrDefaultAsync(p => p.Id == paymentId);
     }
 
-    public async Task<IEnumerable<Payment>> FindByShipmentIdAsync(int shipmentId)
+    public async Task<Payment> FindByShipmentIdAsync(int shipmentId)
     {
-        return await _context.Payments.ToListAsync();
+        return await _context.Payments.FirstOrDefaultAsync(p => p.ShipmentId == shipmentId);
     }
 
     public void Update(Payment payment)

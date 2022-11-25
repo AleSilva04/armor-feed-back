@@ -2,7 +2,9 @@
 <project version="4">
   <component name="UserContentModel">
     <attachedFolders>
+      <Path>../../ArmorFeedApi</Path>
       <Path>../../Back-end</Path>
+      <Path>../../Back-end-develop</Path>
     </attachedFolders>
     <explicitIncludes />
     <explicitExcludes />
