@@ -23,7 +23,7 @@ public class EnterpriseVehiclesController: ControllerBase
 
     [HttpGet]
     [SwaggerOperation(
-        Summary = "Get Vehicles",
+        Summary = "Get Shipments",
         Description = "Get All Vehicle by Enterprise Id",
         OperationId = "GetVechicles",
         Tags = new []{"Enterprises"}

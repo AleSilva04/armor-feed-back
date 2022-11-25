@@ -1,12 +1,13 @@
 ﻿using ArmorFeedApi.Enterprises.Domain.Models;
 using ArmorFeedApi.Enterprises.Domain.Services.Communication;
+using ArmorFeedApi.Security.Domain.Services;
+using ArmorFeedApi.Security.Domain.Services.Communication;
 
 namespace ArmorFeedApi.Enterprises.Domain.Services;
 
-public interface IEnterpriseService
+public interface IEnterpriseService: IUserService<Enterprise>
 {
-    Task<IEnumerable<Enterprise>> ListAsync();
-    Task<EnterpriseResponse> SaveAsync(Enterprise enterprise);
-    Task<EnterpriseResponse> UpdateAsync(int id, Enterprise enterprise);
-    Task<EnterpriseResponse> DeleteAsync(int id);
+    Task<AuthenticateEnterpriseResponse> Authenticate(AuthenticateRequest request);
+    Task RegisterAsync(RegisterEnterpriseRequest request);
+    Task UpdateAsync(int id, UpdateEnterpriseRequest request);
 }

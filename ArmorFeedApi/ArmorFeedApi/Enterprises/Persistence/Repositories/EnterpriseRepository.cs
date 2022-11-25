@@ -25,6 +25,22 @@ public class EnterpriseRepository: BaseRepository, IEnterpriseRepository
         return await _context.Enterprises.FindAsync(id);
     }
 
+    public async Task<Enterprise> FindByEmailAsync(string email)
+    {
+        return await _context.Enterprises.SingleOrDefaultAsync(x => x.Email == email);
+    }
+
+    public bool ExitsByEmail(string email)
+    {
+        return _context.Enterprises.Any(x => x.Email == email);
+
+    }
+
+    public Enterprise FindById(int id)
+    {
+        return _context.Enterprises.Find(id);
+    }
+
     public void Update(Enterprise enterprise)
     {
         _context.Enterprises.Update(enterprise);

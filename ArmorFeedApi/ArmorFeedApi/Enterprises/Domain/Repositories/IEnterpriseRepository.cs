@@ -1,14 +1,11 @@
 ﻿
 
 using ArmorFeedApi.Enterprises.Domain.Models;
+using ArmorFeedApi.Security.Domain.Respositories;
 
 namespace ArmorFeedApi.Enterprises.Domain.Repositories;
 
-public interface IEnterpriseRepository
+public interface IEnterpriseRepository: IUserRepository<Enterprise>
 {
-    Task<IEnumerable<Enterprise>> ListAsync();
-    Task AddAsync(Enterprise enterprise);
-    Task<Enterprise> FindByIdAsync(int id);
-    void Update(Enterprise enterprise);
-    void Remove(Enterprise enterprise);
+   
 }

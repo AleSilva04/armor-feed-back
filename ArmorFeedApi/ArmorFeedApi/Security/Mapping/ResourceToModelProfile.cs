@@ -5,7 +5,7 @@ using AutoMapper;
 
 namespace ArmorFeedApi.Security.Mapping;
 
-public class ResourceToModelProfile: Profile
+public class ResourceToModelProfile: AutoMapper.Profile
 {
     public ResourceToModelProfile()
     {
