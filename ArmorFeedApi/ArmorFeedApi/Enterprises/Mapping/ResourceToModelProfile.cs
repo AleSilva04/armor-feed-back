@@ -9,7 +9,7 @@ using AutoMapper;
 
 namespace ArmorFeedApi.Enterprises.Mapping;
 
-public class ResourceToModelProfile: Profile
+public class ResourceToModelProfile: AutoMapper.Profile
 {
     public ResourceToModelProfile()
     {

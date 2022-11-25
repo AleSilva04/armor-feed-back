@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArmorFeedApi", "ArmorFeedApi\ArmorFeedApi.csproj", "{3B8DCCD6-C6A7-44FD-B012-F9C85FA3EA74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArmorFeedTest", "ArmorFeedTest\ArmorFeedTest.csproj", "{8285FDAA-1489-4632-8531-BFFE24E7E2F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{3B8DCCD6-C6A7-44FD-B012-F9C85FA3EA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B8DCCD6-C6A7-44FD-B012-F9C85FA3EA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B8DCCD6-C6A7-44FD-B012-F9C85FA3EA74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8285FDAA-1489-4632-8531-BFFE24E7E2F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8285FDAA-1489-4632-8531-BFFE24E7E2F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8285FDAA-1489-4632-8531-BFFE24E7E2F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8285FDAA-1489-4632-8531-BFFE24E7E2F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

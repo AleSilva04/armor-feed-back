@@ -11,7 +11,7 @@ using AutoMapper;
 
 namespace ArmorFeedApi.Enterprises.Mapping;
 
-public class ModelToResourceProfile : Profile
+public class ModelToResourceProfile : AutoMapper.Profile
 {
     public ModelToResourceProfile()
     {

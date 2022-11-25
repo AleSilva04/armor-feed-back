@@ -16,7 +16,7 @@ using Enterprise = ArmorFeedApi.Enterprises.Domain.Models.Enterprise;
 
 namespace ArmorFeedApi.Shared.Mapping;
 
-public class ModelToResourceProfile: Profile
+public class ModelToResourceProfile: AutoMapper.Profile
 {
     public ModelToResourceProfile()
     {

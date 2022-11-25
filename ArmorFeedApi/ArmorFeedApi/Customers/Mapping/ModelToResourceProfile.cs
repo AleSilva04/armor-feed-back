@@ -8,7 +8,7 @@ using AutoMapper;
 
 namespace ArmorFeedApi.Customers.Mapping;
 
-public class ModelToResourceProfile : Profile
+public class ModelToResourceProfile : AutoMapper.Profile
 {
     public ModelToResourceProfile()
     {

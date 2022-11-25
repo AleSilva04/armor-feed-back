@@ -4,6 +4,7 @@ using ArmorFeedApi.Vehicles.Domain.Models;
 using ArmorFeedApi.Vehicles.Domain.Services;
 using ArmorFeedApi.Vehicles.Resources;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -38,7 +39,6 @@ public class VehiclesController: ControllerBase
 
         return resources;
     }
-    
     [HttpPost]
     [SwaggerOperation(
         Summary = "Post Vehicle",

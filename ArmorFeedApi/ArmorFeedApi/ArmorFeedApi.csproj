@@ -9,17 +9,28 @@
     <ItemGroup>
         <PackageReference Include="AutoMapper" Version="11.0.1" />
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0-preview.4.22229.2" />
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.5">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.5" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="1.1.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design.Specification.Tests" Version="2.0.3" />
         <PackageReference Include="MySql.EntityFrameworkCore" Version="6.0.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
         <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.3.1" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.20.0" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Payments\Mapping" />
       <Folder Include="Payments\Persistence\Contexts" />
+      <Folder Include="Security\Controllers" />
+      <Folder Include="Security\Persistence\Repositories" />
+      <Folder Include="Security\Services" />
     </ItemGroup>
 
 </Project>
